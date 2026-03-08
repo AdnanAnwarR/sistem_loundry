@@ -32,21 +32,8 @@
 </head>
 <body class="font-sans text-[#0f172a] bg-[#fcfdfd] antialiased overflow-x-hidden selection:bg-[#2580ff] selection:text-white">
 
-<<<<<<< HEAD
-    <x-landing.navbar />
-    
-    <main>
-        <x-landing.home />
-        <x-landing.services />
-        <x-landing.pricing />
-        <x-landing.contact />
-    </main>
-
-</body>
-</html>
-=======
-    <nav x-data="{ open: false }" class="w-full py-6 bg-[#fcfdfd] z-50 relative">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+    <nav x-data="{ open: false }" class="w-full py-6 bg-[#fcfdfd] z-50 sticky top-0">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center ">
             <!-- Logo -->
             <a href="#" class="flex items-center gap-2 font-extrabold text-xl text-slate-900 z-50">
                 <div class="bg-[#2580ff] text-white rounded-lg p-1.5 flex items-center justify-center">
@@ -61,9 +48,9 @@
             <!-- Desktop Links -->
             <div class="hidden md:flex gap-8 items-center text-[0.95rem] font-bold text-[#64748b]">
                 <a href="#" class="hover:text-[#0f172a] transition-colors">Home</a>
+                <a href="#how-it-works" class="hover:text-[#0f172a] transition-colors">Process</a>
                 <a href="#services" class="hover:text-[#0f172a] transition-colors">Services</a>
-                <a href="#how-it-works" class="hover:text-[#0f172a] transition-colors">Pricing</a>
-                <a href="#contact" class="hover:text-[#0f172a] transition-colors">Contact</a>
+                <a href="#testi" class="hover:text-[#0f172a] transition-colors">Testimoni</a>
             </div>
             
             <!-- Auth Buttons (Desktop) -->
@@ -98,9 +85,9 @@
             
             <div class="flex flex-col gap-6 text-[1.25rem] font-bold text-[#0f172a] mb-auto">
                 <a href="#" @click="open = false" class="py-2 border-b border-gray-100">Home</a>
+                <a href="#how-it-works" @click="open = false" class="py-2 border-b border-gray-100">Process</a>
                 <a href="#services" @click="open = false" class="py-2 border-b border-gray-100">Services</a>
-                <a href="#how-it-works" @click="open = false" class="py-2 border-b border-gray-100">Pricing</a>
-                <a href="#contact" @click="open = false" class="py-2 border-b border-gray-100">Contact</a>
+                <a href="#testi" @click="open = false" class="py-2 border-b border-gray-100">Testimoni</a>
             </div>
 
             <div class="flex flex-col gap-4 mt-8">
@@ -272,7 +259,7 @@
                         <p class="text-[#64748b] text-[0.95rem] leading-relaxed mb-8 flex-grow">Professional high-speed washing and sanitizing to maintain fabric quality.</p>
                         <div class="flex items-center justify-between border-t border-gray-100 pt-6 mt-auto">
                             <span class="text-[0.65rem] font-bold text-[#9ca3af] uppercase tracking-widest">Starting at</span>
-                            <span class="text-[#64748b] font-medium"><strong class="text-[#2580ff] text-xl font-extrabold mr-0.5">Rp 8.000</strong>/kg</span>
+                            <span class="text-[#64748b] font-medium"><strong class="text-[#2580ff] text-xl font-extrabold mr-0.5">Rp 5.000</strong>/kg</span>
                         </div>
                     </div>
 
@@ -290,7 +277,7 @@
                         <p class="text-[#64748b] text-[0.95rem] leading-relaxed mb-8 flex-grow">Expert ironing for crisp, wrinkle-free garments ready to wear.</p>
                         <div class="flex items-center justify-between border-t border-gray-100 pt-6 mt-auto">
                             <span class="text-[0.65rem] font-bold text-[#9ca3af] uppercase tracking-widest">Starting at</span>
-                            <span class="text-[#64748b] font-medium"><strong class="text-[#2580ff] text-xl font-extrabold mr-0.5">Rp 10.000</strong>/kg</span>
+                            <span class="text-[#64748b] font-medium"><strong class="text-[#2580ff] text-xl font-extrabold mr-0.5">Rp 5.000</strong>/kg</span>
                         </div>
                     </div>
 
@@ -310,7 +297,7 @@
                         <p class="text-[#64748b] text-[0.95rem] leading-relaxed mb-8 flex-grow">Secure, eco-friendly packaging for safe travel and storage of your clean clothes.</p>
                         <div class="flex items-center justify-between border-t border-gray-100 pt-6 mt-auto">
                             <span class="text-[0.65rem] font-bold text-[#9ca3af] uppercase tracking-widest">Starting at</span>
-                            <span class="text-[#64748b] font-medium"><strong class="text-[#2580ff] text-xl font-extrabold mr-0.5">Rp 5.000</strong>/kg</span>
+                            <span class="text-[#64748b] font-medium"><strong class="text-[#2580ff] text-xl font-extrabold mr-0.5">Rp 3.000</strong>/kg</span>
                         </div>
                     </div>
                 </div>
@@ -319,7 +306,7 @@
             </div>
         </section>
 
-        <section class="py-24 bg-[#f8f9fc] antialiased">
+        <section id="testi" class="py-24 bg-[#f8f9fc] antialiased">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center mb-16 px-4">
                     <div class="text-[0.7rem] font-bold text-[#2580ff] uppercase tracking-widest mb-4">Success Stories</div>
@@ -432,4 +419,3 @@
 
 </body>
 </html>
->>>>>>> page/landing_page
