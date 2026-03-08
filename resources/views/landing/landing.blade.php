@@ -55,9 +55,9 @@
             
             <!-- Auth Buttons (Desktop) -->
             <div class="hidden md:flex gap-6 items-center z-50">
-                <a href="/" class="font-bold text-[0.95rem] text-[#64748b] hover:text-[#0f172a] transition-colors">Log In</a>
-                <a href="/" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-[0.95rem] font-bold text-white bg-[#2580ff] hover:bg-blue-600 shadow-sm transition-colors">
-                    Sign Up
+                <a href="/login" class="font-bold text-[0.95rem] text-[#64748b] hover:text-[#0f172a] transition-colors">Login</a>
+                <a href="/register" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-[0.95rem] font-bold text-white bg-[#2580ff] hover:bg-blue-600 shadow-sm transition-colors">
+                    Register
                 </a>
             </div>
 
@@ -91,8 +91,8 @@
             </div>
 
             <div class="flex flex-col gap-4 mt-8">
-                <a href="/" class="w-full text-center py-3.5 rounded-xl font-bold text-[#0f172a] bg-gray-50 border border-gray-200">Log In</a>
-                <a href="/" class="w-full text-center py-3.5 rounded-xl font-bold text-white bg-[#2580ff] shadow-sm">Sign Up</a>
+                <a href="/login" class="w-full text-center py-3.5 rounded-xl font-bold text-[#0f172a] bg-gray-50 border border-gray-200">Login</a>
+                <a href="/register" class="w-full text-center py-3.5 rounded-xl font-bold text-white bg-[#2580ff] shadow-sm">Register</a>
             </div>
         </div>
     </nav>
