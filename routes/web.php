@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+//landing page
 Route::get('/', function () {
     return view('landing.landing');
 });
@@ -10,7 +11,7 @@ Route::get('/profile', function () {
     return view('profile');
 });
 
-
+/* login and register */
 Route::get('/login',function(){
     return view('form.login');
 });
@@ -19,47 +20,57 @@ Route::get('/register',function(){
     return view('form.register');
 });
 
-
-Route::get('/home', function () {
-    return view('home');
+// cashier
+Route::get('/cashier/dashboard', function () {
+    return view('cashier.cashierDashboard');
 });
 
-Route::get('/createOrder', function () {
-    return view('createOrder');
+Route::get('/cashier/order', function () {
+    return view('cashier.cashierOrder');
 });
 
-Route::get('/customerDashboard', function () {
-    return view('customerDashboard');
+Route::get('/cashier/status', function () {
+    return view('cashier.cashierStatus');
 });
 
-Route::get('/adminDashboard', function () {
-    return view('adminDashboard');
+
+//admin
+Route::get('/admin/dashboard', function () {
+    return view('admin.adminDashboard');
 });
 
-Route::get('/adminOrders', function () {
-    return view('adminorders');
+Route::get('/admin/customers', function () {
+    return view('admin.adminCustomers');
 });
 
-Route::get('/adminService', function () {
-    return view('adminService');
+Route::get('/admin/employees', function () {
+    return view('admin.adminEmployees');
 });
 
-Route::get('/adminEmployees', function () {
-    return view('adminEmployees');
+Route::get('/admin/orders', function () {
+    return view('admin.adminOrders');
 });
 
-Route::get('/adminEmployeeDirectory', function () {
-    return view('adminEmployeeDirectory');
+Route::get('/admin/services', function () {
+    return view('admin.adminServices');
 });
 
-Route::get('/adminReportsAnalytics', function () {
-    return view('adminReportsAnalytics');
+//user
+Route::get('/user/dashboard', function () {
+    return view('user.userDashboard');
 });
 
-Route::get('/adminCustomerOverview', function () {
-    return view('adminCustomerOverview');
+Route::get('/user/history', function () {
+    return view('user.userHistory');
 });
 
-Route::get('/adminRoleManagement', function () {
-    return view('adminRoleManagement');
+Route::get('/user/order', function () {
+    return view('user.userOrder');
 });
+
+
+Route::get('/user/profile', function () {
+    return view('user.userProfile');
+});
+
+
