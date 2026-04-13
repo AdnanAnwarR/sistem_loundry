@@ -20,6 +20,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'no_hp',
+        'role',
         'password',
     ];
 
@@ -44,5 +46,33 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // Relasi ke pesanan (sebagai customer)
+    public function pesanan()
+    {
+        return $this->hasMany(Pesanan::class, 'id_customer');
+    }
+
+    // Relasi ke detail pesanan (sebagai pegawai)
+    public function detailPesanan()
+    {
+        return $this->hasMany(DetailPesanan::class, 'id_pegawai');
+    }
+
+    // Cek role
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isCashier()
+    {
+        return $this->role === 'cashier';
+    }
+
+    public function isUser()
+    {
+        return $this->role === 'user';
     }
 }
