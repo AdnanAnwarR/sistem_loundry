@@ -15,19 +15,25 @@ class LayananSeeder extends Seeder
     {
         $layanans = [
             [
-                'id_layanan' => 1,
-                'nama_layanan' => 'cuci',
-                'harga_per_kg' => 5000,
+                'id' => 1,
+                'nama_layanan' => 'Cuci Reguler',
+                'harga' => 5000,
+                'durasi' => 120, // 2 jam
+                'deskripsi' => 'Pencucian pakaian harian reguler',
             ],
             [
-                'id_layanan' => 2,
-                'nama_layanan' => 'setrika',
-                'harga_per_kg' => 5000,
+                'id' => 2,
+                'nama_layanan' => 'Cuci Sepatu',
+                'harga' => 25000,
+                'durasi' => 180,
+                'deskripsi' => 'Spa cuci sepatu bersih detail',
             ],
             [
-                'id_layanan' => 3,
-                'nama_layanan' => 'packing',
-                'harga_per_kg' => 3000,
+                'id' => 3,
+                'nama_layanan' => 'Setrika Saja',
+                'harga' => 4000,
+                'durasi' => 60,
+                'deskripsi' => 'Setrika rapi licin per kg',
             ],
         ];
 

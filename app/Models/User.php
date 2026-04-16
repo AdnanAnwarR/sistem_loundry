@@ -3,7 +3,6 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\DetailPesanan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -23,6 +22,7 @@ class User extends Authenticatable
         'email',
         'no_hp',
         'role',
+        'is_active',
         'password',
     ];
 
@@ -55,10 +55,10 @@ class User extends Authenticatable
         return $this->hasMany(Pesanan::class, 'id_customer');
     }
 
-    // Relasi ke detail pesanan (sebagai pegawai)
-    public function detailPesanan()
+    // Relasi ke pesanan (sebagai staff)
+    public function pekerjaan()
     {
-        return $this->hasMany(DetailPesanan::class, 'id_pegawai');
+        return $this->hasMany(Pesanan::class, 'staf_id');
     }
 
     // Cek role
@@ -67,13 +67,13 @@ class User extends Authenticatable
         return $this->role === 'admin';
     }
 
-    public function isCashier()
+    public function isStaff()
     {
-        return $this->role === 'cashier';
+        return $this->role === 'staff';
     }
 
-    public function isUser()
+    public function isPelanggan()
     {
-        return $this->role === 'user';
+        return $this->role === 'pelanggan';
     }
 }

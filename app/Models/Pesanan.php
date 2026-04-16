@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\DetailPesanan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,44 +12,47 @@ class Pesanan extends Model
     protected $table = 'pesanan';
 
     protected $fillable = [
-        'id_customer',
-        'tanggal',
+        'user_id',
+        'layanan_id',
+        'jadwal_id',
+        'staf_id',
+        'order_id',
+        'total_harga',
+        'catatan',
         'status',
+        'status_pembayaran',
         'metode_bayar',
+        'snap_token',
+        'rating',
+        'ulasan',
     ];
 
     protected $casts = [
-        'tanggal' => 'date',
+        'total_harga' => 'decimal:2',
     ];
 
-    // Relasi ke user (customer)
-    public function customer()
+    // Relasi ke user (pelanggan)
+    public function pelanggan()
     {
-        return $this->belongsTo(User::class, 'id_customer');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    // Relasi ke detail pesanan
-    public function detailPesanan()
-    {
-        return $this->hasMany(DetailPesanan::class, 'id_pesanan');
-    }
-
-    // Relasi ke layanan melalui detail pesanan
+    // Relasi ke layanan
     public function layanan()
     {
-        return $this->belongsToMany(Layanan::class, 'detail_pesanan', 'id_pesanan', 'id_layanan')
-                    ->withPivot('berat_per_layanan', 'id_pegawai')
-                    ->withTimestamps();
+        return $this->belongsTo(Layanan::class, 'layanan_id');
     }
 
-    // Hitung total harga pesanan
-    public function getTotalAttribute()
+    // Relasi ke jadwal
+    public function jadwal()
     {
-        $total = 0;
-        foreach ($this->detailPesanan as $detail) {
-            $total += $detail->berat_per_layanan * $detail->layanan->harga_per_kg;
-        }
-        return $total;
+        return $this->belongsTo(Jadwal::class, 'jadwal_id');
+    }
+
+    // Relasi ke staf pengelola
+    public function staf()
+    {
+        return $this->belongsTo(User::class, 'staf_id');
     }
 
     // Scope berdasarkan status
@@ -59,9 +61,9 @@ class Pesanan extends Model
         return $query->where('status', $status);
     }
 
-    // Scope berdasarkan tanggal
-    public function scopeTanggal($query, $tanggal)
+    // Scope berdasarkan status pembayaran
+    public function scopeStatusPembayaran($query, $status)
     {
-        return $query->whereDate('tanggal', $tanggal);
+        return $query->where('status_pembayaran', $status);
     }
 }

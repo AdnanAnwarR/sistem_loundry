@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\DetailPesanan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,27 +11,30 @@ class Layanan extends Model
 
     protected $table = 'layanan';
 
-    // Primary key custom (karena pakai 'id_layanan' bukan 'id')
-    protected $primaryKey = 'id_layanan';
+    // Primary key custom (default id)
+    protected $primaryKey = 'id';
     public $incrementing = true;
     protected $keyType = 'int';
 
     protected $fillable = [
         'nama_layanan',
-        'harga_per_kg',
+        'harga',
+        'durasi',
         'deskripsi',
+        'foto',
         'is_active',
     ];
 
     protected $casts = [
-        'harga_per_kg' => 'decimal:2',
+        'harga' => 'decimal:2',
+        'durasi' => 'integer',
         'is_active' => 'boolean',
     ];
 
-    // Relasi ke detail pesanan
-    public function detailPesanan()
+    // Relasi ke pesanan
+    public function pesanan()
     {
-        return $this->hasMany(DetailPesanan::class, 'id_layanan', 'id_layanan');
+        return $this->hasMany(Pesanan::class, 'layanan_id', 'id');
     }
 
     // Scope untuk layanan aktif

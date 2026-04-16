@@ -12,14 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('layanan', function (Blueprint $table) {
-            $table->id('id_layanan'); // L001, L002, L003 (auto increment)
-            $table->string('nama_layanan'); // cuci, setrika, packing
-            $table->decimal('harga_per_kg', 10, 2); // 5000.00, 3000.00
-            $table->text('deskripsi')->nullable(); // optional: deskripsi layanan
-            $table->boolean('is_active')->default(true); // optional: untuk nonaktifkan layanan
+            $table->id();
+            $table->string('nama_layanan');
+            $table->decimal('harga', 10, 2);
+            $table->integer('durasi')->default(60)->comment('Durasi dalam menit');
+            $table->text('deskripsi')->nullable();
+            $table->string('foto')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
             
-            // Index untuk performance
             $table->index('nama_layanan');
             $table->index('is_active');
         });
