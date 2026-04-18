@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 
 //landing page
 Route::get('/', function () {
@@ -12,13 +14,12 @@ Route::get('/profile', function () {
 });
 
 /* login and register */
-Route::get('/login',function(){
-    return view('form.login');
-});
+Route::get('/login', [LoginController::class, 'index'])->name('login.index');
+Route::post('/login/process', [LoginController::class, 'process'])->name('login.process');
+Route::post('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
-Route::get('/register',function(){
-    return view('form.register');
-});
+Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
+Route::post('/register/store', [RegisterController::class, 'store'])->name('register.store');
 
 // cashier
 Route::get('/cashier/dashboard', function () {
@@ -58,7 +59,7 @@ Route::get('/admin/services', function () {
 //user
 Route::get('/user/dashboard', function () {
     return view('user.userDashboard');
-});
+})->name('user.dashboard');
 
 Route::get('/user/history', function () {
     return view('user.userHistory');

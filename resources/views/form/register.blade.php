@@ -84,9 +84,37 @@
                 <p class="text-sm text-gray-500 mt-1">Join LaundrySwift for effortless laundry management.</p>
             </div>
 
-            <!-- Form -->
-            <form action="#" method="POST" class="space-y-4">
+            @if (session('success'))
+                <div id="toast-success"
+                    class="fixed top-5 right-5 z-50 bg-green-500 text-white px-4 py-3 rounded-lg shadow-lg">
+                    {{ session('success') }}
+                </div>
 
+                <script>
+                    setTimeout(() => {
+                        const toast = document.getElementById('toast-success');
+                        if (toast) toast.remove();
+                    }, 4000);
+                </script>
+            @endif
+
+            @if ($errors->any())
+                <div id="toast-error"
+                    class="fixed top-5 right-5 z-50 bg-red-500 text-white px-4 py-3 rounded-lg shadow-lg">
+                    {{ $errors->first() }}
+                </div>
+
+                <script>
+                    setTimeout(() => {
+                        const toast = document.getElementById('toast-error');
+                        if (toast) toast.remove();
+                    }, 4000);
+                </script>
+            @endif
+
+            <!-- Form -->
+            <form action="register/store" method="POST" class="space-y-4">
+                @csrf
                 <!-- Full Name -->
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-700 mb-1.5">Full Name</label>
