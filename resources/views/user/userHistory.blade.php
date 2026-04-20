@@ -29,19 +29,20 @@
 <!-- History Cards (Read) -->
 <div class="space-y-4">
     
-    <!-- History Item 1 -->
+    @forelse($historyOrders as $order)
+    <!-- History Item -->
     <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 sm:p-6 lg:p-8 flex flex-col items-center justify-between hover:shadow-md transition-shadow">
         
         <div class="w-full flex flex-col sm:flex-row sm:justify-between items-start mb-4 border-b border-gray-100 pb-4 gap-3 sm:gap-0">
             <div>
                 <span class="bg-green-100 text-green-700 text-[10px] uppercase font-bold px-2.5 py-1 rounded inline-block mb-2">Selesai & Diambil</span>
-                <h3 class="font-black text-xl text-gray-900 tracking-wide">#BKG-66231</h3>
-                <p class="text-xs text-gray-500 mt-1 font-semibold">Tgl Drop-off: 12 Jan 2024</p>
+                <h3 class="font-black text-xl text-gray-900 tracking-wide">#{{ $order->order_id }}</h3>
+                <p class="text-xs text-gray-500 mt-1 font-semibold">Tgl Selesai: {{ $order->updated_at->format('d M Y') }}</p>
             </div>
             <div class="text-left sm:text-right">
                 <p class="text-xs text-gray-400 font-bold uppercase mb-1">Status Bayar</p>
-                <span class="inline-flex items-center gap-1 bg-green-50 text-green-600 px-2.5 py-1 rounded font-bold text-xs border border-green-200">
-                    <i class='bx bx-check'></i> LUNAS (QRIS)
+                <span class="inline-flex items-center gap-1 {{ $order->status_pembayaran == 'sudah_dibayar' ? 'bg-green-50 text-green-600 border-green-200' : 'bg-red-50 text-red-600 border-red-200' }} px-2.5 py-1 rounded font-bold text-xs border">
+                    <i class='bx {{ $order->status_pembayaran == 'sudah_dibayar' ? 'bx-check' : 'bx-x' }}'></i> {{ strtoupper(str_replace('_', ' ', $order->status_pembayaran)) }} ({{ $order->metode_bayar ?? '-' }})
                 </span>
             </div>
         </div>
@@ -50,40 +51,51 @@
             <div class="flex-1 w-full overflow-hidden">
                 <p class="font-bold text-gray-900 text-[11px] uppercase tracking-wider mb-3 text-blue-600">Rincian Layanan:</p>
                 <ul class="space-y-2 text-gray-600 font-medium text-xs">
+                    @forelse($order->layanans as $layanan)
                     <li class="flex justify-between">
-                        <span><i class='bx bx-water mr-1 text-gray-400'></i> Cuci Bersih (@ Rp 3.000)</span>
-                        <span>Rp 9.000</span>
+                        <span><i class='bx bx-water mr-1 text-gray-400'></i> {{ $layanan->nama_layanan }}</span>
+                        <span>-</span>
                     </li>
+                    @empty
                     <li class="flex justify-between">
-                        <span><i class='bx bxs-t-shirt mr-1 text-gray-400'></i> Setrika Uap (@ Rp 5.000)</span>
-                        <span>Rp 15.000</span>
+                        <span><i class='bx bx-water mr-1 text-gray-400'></i> Layanan tidak diketahui</span>
+                        <span>-</span>
                     </li>
-                    <li class="flex justify-between">
-                        <span><i class='bx bx-box mr-1 text-gray-400'></i> Packing (@ Rp 3.000)</span>
-                        <span>Rp 9.000</span>
-                    </li>
+                    @endforelse
+                    @if($order->catatan)
+                    <li class="mt-2 text-[10px] text-gray-400 italic">"{{ $order->catatan }}"</li>
+                    @endif
                 </ul>
             </div>
             
             <div class="flex-1 border-t md:border-t-0 md:border-l border-gray-200 pt-4 md:pt-0 md:pl-8 flex flex-col justify-end">
                 <div class="flex justify-between items-end mb-2">
-                    <span class="text-gray-500 font-medium">Berat Total</span>
-                    <span class="font-bold text-gray-900 text-lg">3.0 Kg</span>
+                    <span class="text-gray-500 font-medium">Tanggal Masuk</span>
+                    <span class="font-bold text-gray-900 text-sm">{{ optional($order->jadwal)->tanggal ? \Carbon\Carbon::parse($order->jadwal->tanggal)->format('d M Y') : '-' }}</span>
                 </div>
                 <div class="flex justify-between items-end">
-                    <span class="text-gray-500 font-bold uppercase text-[11px] tracking-widest mt-1">Total Biaya</span>
-                    <span class="font-black text-blue-600 text-xl md:text-2xl tracking-tight">Rp 33.000</span>
+                    <span class="text-gray-500 font-bold uppercase text-[11px] tracking-widest mt-1">Total Biaya Akhir</span>
+                    <span class="font-black text-blue-600 text-xl md:text-2xl tracking-tight">Rp {{ number_format($order->total_harga, 0, ',', '.') }}</span>
                 </div>
             </div>
         </div>
 
         <div class="w-full mt-6 flex justify-end">
-            <button class="w-full sm:w-auto px-5 py-2 sm:py-2.5 bg-white border border-gray-200 text-gray-600 text-xs font-bold rounded-xl hover:bg-gray-50 transition shadow-sm items-center justify-center flex gap-2">
+            <button class="w-full sm:w-auto px-5 py-2 sm:py-2.5 bg-white border border-gray-200 text-gray-600 text-xs font-bold rounded-xl hover:bg-gray-50 transition shadow-sm items-center justify-center flex gap-2 w-auto">
                 <i class='bx bx-download text-base'></i> Unduh Nota (.PDF)
             </button>
         </div>
 
     </div>
+    @empty
+    <div class="border-2 border-dashed border-gray-200 rounded-2xl p-10 text-center col-span-full">
+        <div class="mx-auto w-16 h-16 bg-gray-50 text-gray-400 rounded-full flex items-center justify-center mb-4">
+            <i class='bx bx-history text-3xl'></i>
+        </div>
+        <h4 class="text-gray-900 font-bold mb-1">Belum Ada Riwayat Pesanan</h4>
+        <p class="text-gray-500 text-sm">Pesanan yang sudah selesai dan diambil akan muncul di sini.</p>
+    </div>
+    @endforelse
 
 </div>
 @endsection

@@ -55,9 +55,9 @@
                 <a href="/user/profile" class="flex items-center gap-3 px-4 py-3 rounded-xl transition-colors mb-2 {{ request()->is('user/profile') ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-gray-500 hover:bg-gray-50 hover:text-blue-600 font-medium' }}">
                     <i class='bx bx-user text-xl'></i> Profil Saya
                 </a>
-                <form action="/logout" method="POST">
+                <form action="{{ route('login.logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 font-medium transition-colors border border-transparent">
+                    <button type="submit" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 font-medium transition-colors border border-transparent cursor-pointer">
                         <i class='bx bx-log-out text-xl'></i> Keluar
                     </button>
                 </form>

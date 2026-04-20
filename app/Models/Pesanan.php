@@ -13,7 +13,6 @@ class Pesanan extends Model
 
     protected $fillable = [
         'user_id',
-        'layanan_id',
         'jadwal_id',
         'staf_id',
         'order_id',
@@ -37,10 +36,10 @@ class Pesanan extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    // Relasi ke layanan
-    public function layanan()
+    // Relasi many-to-many ke layanan
+    public function layanans()
     {
-        return $this->belongsTo(Layanan::class, 'layanan_id');
+        return $this->belongsToMany(Layanan::class, 'detail_pesanan', 'pesanan_id', 'layanan_id')->withTimestamps();
     }
 
     // Relasi ke jadwal

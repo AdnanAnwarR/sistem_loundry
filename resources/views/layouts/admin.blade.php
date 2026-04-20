@@ -40,8 +40,13 @@
             </nav>
         </div>
         <div class="p-4 space-y-1 text-sm font-medium border-t border-gray-50">
-            <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-gray-800 transition"><i class='bx bx-help-circle text-lg'></i> Help Center</a>
-            <a href="#" class="flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-xl transition"><i class='bx bx-log-out text-lg'></i> Logout</a>
+            
+            <form action="{{ route('login.logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="w-full flex items-center gap-3 px-4 py-3 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-xl transition">
+                    <i class='bx bx-log-out text-lg'></i> Logout
+                </button>
+            </form>
         </div>
     </aside>
 
@@ -63,10 +68,7 @@
             </div>
             <div class="flex items-center gap-6">
                 <button class="text-gray-400 hover:text-gray-600 relative">
-                    <i class='bx bx-bell text-xl'></i>
-                    <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
                 </button>
-                <button class="text-gray-400 hover:text-gray-600"><i class='bx bx-cog text-xl'></i></button>
                 <div class="flex items-center gap-3 border-l pl-6 border-gray-100">
                     <div class="w-9 h-9 rounded-full bg-slate-800 flex items-center justify-center text-white font-bold text-sm">AU</div>
                     <div class="text-sm hidden md:block">

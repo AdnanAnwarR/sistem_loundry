@@ -31,10 +31,10 @@ class Layanan extends Model
         'is_active' => 'boolean',
     ];
 
-    // Relasi ke pesanan
-    public function pesanan()
+    // Relasi many-to-many ke pesanan
+    public function pesanans()
     {
-        return $this->hasMany(Pesanan::class, 'layanan_id', 'id');
+        return $this->belongsToMany(Pesanan::class, 'detail_pesanan', 'layanan_id', 'pesanan_id')->withTimestamps();
     }
 
     // Scope untuk layanan aktif
