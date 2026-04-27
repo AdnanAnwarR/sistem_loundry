@@ -55,13 +55,13 @@ composer install
 Salin file `.env.example` menjadi `.env`:
 
 ```bash
-cp .env.example .env
+cp env.example .env
 ```
 
 > **Windows:**
 >
 > ```bash
-> copy .env.example .env
+> copy env.example .env
 > ```
 
 Generate application key:

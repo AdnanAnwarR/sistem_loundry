@@ -11,7 +11,13 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // Mengatur jika user belum login dan mengakses route yang dilindungi (auth), maka dilempar ke /login
+        $middleware->redirectGuestsTo('/login');
+
+        // Mendaftarkan alias 'role' untuk middleware CheckRole yang baru kita buat
+        $middleware->alias([
+            'role' => \App\Http\Middleware\CheckRole::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
