@@ -13,32 +13,32 @@ class LayananSeeder extends Seeder
      */
     public function run(): void
     {
-        $layanans = [
-            [
-                'id' => 1,
-                'nama_layanan' => 'Cuci Reguler',
-                'harga' => 5000,
-                'durasi' => 120, // 2 jam
-                'deskripsi' => 'Pencucian pakaian harian reguler',
+        $layanans = [ // Membuat array berisi data layanan yang akan di-seed
+            [ // Data layanan pertama
+                'id' => 1, // ID layanan
+                'nama_layanan' => 'Cuci Reguler', // Nama dari layanan
+                'harga' => 5000, // Harga layanan
+                'durasi' => 120, // 2 jam // Waktu pengerjaan dalam menit
+                'deskripsi' => 'Pencucian pakaian harian reguler', // Deskripsi dari layanan
             ],
-            [
-                'id' => 2,
-                'nama_layanan' => 'Cuci Sepatu',
-                'harga' => 25000,
-                'durasi' => 180,
-                'deskripsi' => 'Spa cuci sepatu bersih detail',
+            [ // Data layanan kedua
+                'id' => 2, // ID layanan
+                'nama_layanan' => 'Cuci Sepatu', // Nama dari layanan
+                'harga' => 25000, // Harga layanan
+                'durasi' => 180, // Waktu pengerjaan dalam menit
+                'deskripsi' => 'Spa cuci sepatu bersih detail', // Deskripsi dari layanan
             ],
-            [
-                'id' => 3,
-                'nama_layanan' => 'Setrika Saja',
-                'harga' => 4000,
-                'durasi' => 60,
-                'deskripsi' => 'Setrika rapi licin per kg',
+            [ // Data layanan ketiga
+                'id' => 3, // ID layanan
+                'nama_layanan' => 'Setrika Saja', // Nama dari layanan
+                'harga' => 4000, // Harga layanan
+                'durasi' => 60, // Waktu pengerjaan dalam menit
+                'deskripsi' => 'Setrika rapi licin per kg', // Deskripsi dari layanan
             ],
         ];
 
-        foreach ($layanans as $layanan) {
-            Layanan::create($layanan);
+        foreach ($layanans as $layanan) { // Melakukan perulangan untuk setiap data layanan dalam array
+            Layanan::create($layanan); // Menyimpan data layanan ke dalam database
         }
     }
 }

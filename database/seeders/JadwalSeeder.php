@@ -13,41 +13,41 @@ class JadwalSeeder extends Seeder
      */
     public function run(): void
     {
-        $besok = Carbon::now()->addDay()->format('Y-m-d');
+        $besok = Carbon::now()->addDay()->format('Y-m-d'); // Mendapatkan tanggal besok dengan format Tahun-Bulan-Hari
         
-        $jadwals = [
-            [
-                'id' => 1,
-                'tanggal' => $besok,
-                'slot_waktu' => '08:00 - 10:00',
-                'kapasitas' => 5,
-                'terisi' => 2,
+        $jadwals = [ // Membuat array berisi data jadwal yang akan di-seed
+            [ // Data jadwal pertama
+                'id' => 1, // ID jadwal
+                'tanggal' => $besok, // Mengatur tanggal jadwal untuk besok
+                'slot_waktu' => '08:00 - 10:00', // Rentang waktu untuk slot ini
+                'kapasitas' => 5, // Kapasitas maksimal pesanan untuk slot ini
+                'terisi' => 2, // Jumlah pesanan yang sudah masuk untuk slot ini
             ],
-            [
-                'id' => 2,
-                'tanggal' => $besok,
-                'slot_waktu' => '10:00 - 12:00',
-                'kapasitas' => 5,
-                'terisi' => 0,
+            [ // Data jadwal kedua
+                'id' => 2, // ID jadwal
+                'tanggal' => $besok, // Mengatur tanggal jadwal untuk besok
+                'slot_waktu' => '10:00 - 12:00', // Rentang waktu untuk slot ini
+                'kapasitas' => 5, // Kapasitas maksimal pesanan
+                'terisi' => 0, // Belum ada pesanan
             ],
-            [
-                'id' => 3,
-                'tanggal' => $besok,
-                'slot_waktu' => '13:00 - 15:00',
-                'kapasitas' => 3,
-                'terisi' => 3, // full booked
+            [ // Data jadwal ketiga
+                'id' => 3, // ID jadwal
+                'tanggal' => $besok, // Mengatur tanggal jadwal untuk besok
+                'slot_waktu' => '13:00 - 15:00', // Rentang waktu untuk slot ini
+                'kapasitas' => 3, // Kapasitas maksimal pesanan
+                'terisi' => 3, // full booked // Slot waktu sudah penuh
             ],
-            [
-                'id' => 4,
-                'tanggal' => Carbon::now()->addDays(2)->format('Y-m-d'),
-                'slot_waktu' => '08:00 - 10:00',
-                'kapasitas' => 5,
-                'terisi' => 0,
+            [ // Data jadwal keempat
+                'id' => 4, // ID jadwal
+                'tanggal' => Carbon::now()->addDays(2)->format('Y-m-d'), // Mengatur tanggal jadwal untuk lusa
+                'slot_waktu' => '08:00 - 10:00', // Rentang waktu untuk slot ini
+                'kapasitas' => 5, // Kapasitas maksimal pesanan
+                'terisi' => 0, // Belum ada pesanan
             ],
         ];
 
-        foreach ($jadwals as $jadwal) {
-            Jadwal::create($jadwal);
+        foreach ($jadwals as $jadwal) { // Melakukan perulangan untuk setiap data jadwal dalam array
+            Jadwal::create($jadwal); // Menyimpan data jadwal ke dalam database
         }
     }
 }

@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('jadwal', function (Blueprint $table) {
-            $table->id();
-            $table->date('tanggal');
-            $table->string('slot_waktu');
-            $table->integer('kapasitas')->default(1);
-            $table->integer('terisi')->default(0);
-            $table->timestamps();
+            $table->id(); // Membuat kolom 'id' sebagai primary key
+            $table->date('tanggal'); // Membuat kolom 'tanggal' bertipe date untuk tanggal jadwal
+            $table->string('slot_waktu'); // Membuat kolom 'slot_waktu' bertipe string (contoh: "08:00 - 10:00")
+            $table->integer('kapasitas')->default(1); // Membuat kolom 'kapasitas' bertipe integer, default 1
+            $table->integer('terisi')->default(0); // Membuat kolom 'terisi' bertipe integer, default 0 (belum ada pesanan)
+            $table->timestamps(); // Membuat kolom 'created_at' dan 'updated_at'
             
-            $table->index('tanggal');
+            $table->index('tanggal'); // Menambahkan index pada kolom 'tanggal' untuk mempercepat pencarian jadwal berdasarkan tanggal
         });
     }
 

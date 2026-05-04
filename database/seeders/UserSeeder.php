@@ -14,56 +14,56 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = [
-            [
-                'id' => 1,
-                'name' => 'jaka',
-                'email' => 'jaka@example.com',
-                'no_hp' => '87865786543',
-                'role' => 'pelanggan',
-                'is_active' => true,
-                'password' => Hash::make('password'),
+        $users = [ // Membuat array berisi data user yang akan di-seed
+            [ // Data user pertama
+                'id' => 1, // ID user
+                'name' => 'jaka', // Nama user
+                'email' => 'jaka@example.com', // Email user
+                'no_hp' => '87865786543', // Nomor handphone user
+                'role' => 'pelanggan', // Peran (role) user
+                'is_active' => true, // Status aktif user
+                'password' => Hash::make('password'), // Mengenkripsi (hashing) password 'password'
             ],
-            [
-                'id' => 2,
-                'name' => 'joko',
-                'email' => 'joko@example.com',
-                'no_hp' => '84365783463',
-                'role' => 'pelanggan',
-                'is_active' => true,
-                'password' => Hash::make('password'),
+            [ // Data user kedua
+                'id' => 2, // ID user
+                'name' => 'joko', // Nama user
+                'email' => 'joko@example.com', // Email user
+                'no_hp' => '84365783463', // Nomor handphone user
+                'role' => 'pelanggan', // Peran (role) user
+                'is_active' => true, // Status aktif user
+                'password' => Hash::make('password'), // Mengenkripsi (hashing) password 'password'
             ],
-            [
-                'id' => 3,
-                'name' => 'bowo',
-                'email' => 'bowo@example.com',
-                'no_hp' => '82339434743',
-                'role' => 'pelanggan',
-                'is_active' => true,
-                'password' => Hash::make('password'),
+            [ // Data user ketiga
+                'id' => 3, // ID user
+                'name' => 'bowo', // Nama user
+                'email' => 'bowo@example.com', // Email user
+                'no_hp' => '82339434743', // Nomor handphone user
+                'role' => 'pelanggan', // Peran (role) user
+                'is_active' => true, // Status aktif user
+                'password' => Hash::make('password'), // Mengenkripsi (hashing) password 'password'
             ],
-            [
-                'id' => 4,
-                'name' => 'dono',
-                'email' => 'dono@example.com',
-                'no_hp' => '82339434744',
-                'role' => 'staff',
-                'is_active' => true,
-                'password' => Hash::make('password'),
+            [ // Data user keempat (staf)
+                'id' => 4, // ID user
+                'name' => 'dono', // Nama user
+                'email' => 'dono@example.com', // Email user
+                'no_hp' => '82339434744', // Nomor handphone user
+                'role' => 'staff', // Peran (role) user
+                'is_active' => true, // Status aktif user
+                'password' => Hash::make('password'), // Mengenkripsi (hashing) password 'password'
             ],
-            [
-                'id' => 5,
-                'name' => 'admin',
-                'email' => 'admin@example.com',
-                'no_hp' => '82339434745',
-                'role' => 'admin',
-                'is_active' => true,
-                'password' => Hash::make('password'),
+            [ // Data user kelima (admin)
+                'id' => 5, // ID user
+                'name' => 'admin', // Nama user
+                'email' => 'admin@example.com', // Email user
+                'no_hp' => '82339434745', // Nomor handphone user
+                'role' => 'admin', // Peran (role) user
+                'is_active' => true, // Status aktif user
+                'password' => Hash::make('password'), // Mengenkripsi (hashing) password 'password'
             ],
         ];
 
-        foreach ($users as $user) {
-            User::create($user);
+        foreach ($users as $user) { // Melakukan perulangan untuk setiap data user dalam array
+            User::create($user); // Menyimpan data user ke dalam database
         }
     }
 }

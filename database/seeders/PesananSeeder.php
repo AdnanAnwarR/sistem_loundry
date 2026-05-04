@@ -13,59 +13,59 @@ class PesananSeeder extends Seeder
      */
     public function run(): void
     {
-        $pesanans = [
-            [
-                'id' => 1,
-                'user_id' => 1,
-                'layanan_id' => 1,
-                'jadwal_id' => 1,
-                'staf_id' => 4,
-                'order_id' => 'ORD-001',
-                'total_harga' => 5000,
-                'catatan' => 'Tolong cucinya pisah warna ya',
-                'status' => 'selesai',
-                'status_pembayaran' => 'sudah_dibayar',
-                'metode_bayar' => 'qris',
-                'snap_token' => null,
-                'rating' => 5,
-                'ulasan' => 'Bersih dan wangi',
+        $pesanans = [ // Membuat array berisi data pesanan yang akan di-seed
+            [ // Data pesanan pertama
+                'id' => 1, // ID pesanan
+                'user_id' => 1, // ID user pelanggan yang memesan
+                'layanan_id' => 1, // ID layanan yang dipesan
+                'jadwal_id' => 1, // ID jadwal pesanan
+                'staf_id' => 4, // ID user staf yang menangani pesanan
+                'order_id' => 'ORD-001', // Nomor order (unik)
+                'total_harga' => 5000, // Total harga pesanan
+                'catatan' => 'Tolong cucinya pisah warna ya', // Catatan tambahan dari pelanggan
+                'status' => 'selesai', // Status saat ini dari pesanan
+                'status_pembayaran' => 'sudah_dibayar', // Status pembayaran pesanan
+                'metode_bayar' => 'qris', // Metode pembayaran yang digunakan
+                'snap_token' => null, // Token pembayaran (kosong jika sudah lunas)
+                'rating' => 5, // Rating yang diberikan pelanggan
+                'ulasan' => 'Bersih dan wangi', // Ulasan teks dari pelanggan
             ],
-            [
-                'id' => 2,
-                'user_id' => 2,
-                'layanan_id' => 2,
-                'jadwal_id' => 1,
-                'staf_id' => null, // belum diassign
-                'order_id' => 'ORD-002',
-                'total_harga' => 25000,
-                'catatan' => 'Sepatu putih',
-                'status' => 'pending',
-                'status_pembayaran' => 'belum_dibayar',
-                'metode_bayar' => null,
-                'snap_token' => 'dummy-snap-token-2',
-                'rating' => null,
-                'ulasan' => null,
+            [ // Data pesanan kedua
+                'id' => 2, // ID pesanan
+                'user_id' => 2, // ID user pelanggan yang memesan
+                'layanan_id' => 2, // ID layanan yang dipesan
+                'jadwal_id' => 1, // ID jadwal pesanan
+                'staf_id' => null, // belum diassign // Belum ada staf yang ditugaskan
+                'order_id' => 'ORD-002', // Nomor order (unik)
+                'total_harga' => 25000, // Total harga pesanan
+                'catatan' => 'Sepatu putih', // Catatan tambahan dari pelanggan
+                'status' => 'pending', // Status saat ini dari pesanan (menunggu)
+                'status_pembayaran' => 'belum_dibayar', // Status pembayaran pesanan
+                'metode_bayar' => null, // Metode pembayaran belum dipilih
+                'snap_token' => 'dummy-snap-token-2', // Token dummy untuk pembayaran
+                'rating' => null, // Belum ada rating
+                'ulasan' => null, // Belum ada ulasan
             ],
-            [
-                'id' => 3,
-                'user_id' => 3,
-                'layanan_id' => 3,
-                'jadwal_id' => 3,
-                'staf_id' => 4,
-                'order_id' => 'ORD-003',
-                'total_harga' => 4000,
-                'catatan' => null,
-                'status' => 'proses',
-                'status_pembayaran' => 'sudah_dibayar',
-                'metode_bayar' => 'transfer',
-                'snap_token' => null,
-                'rating' => null,
-                'ulasan' => null,
+            [ // Data pesanan ketiga
+                'id' => 3, // ID pesanan
+                'user_id' => 3, // ID user pelanggan yang memesan
+                'layanan_id' => 3, // ID layanan yang dipesan
+                'jadwal_id' => 3, // ID jadwal pesanan
+                'staf_id' => 4, // ID user staf yang menangani pesanan
+                'order_id' => 'ORD-003', // Nomor order (unik)
+                'total_harga' => 4000, // Total harga pesanan
+                'catatan' => null, // Tidak ada catatan tambahan
+                'status' => 'proses', // Status saat ini dari pesanan (sedang dikerjakan)
+                'status_pembayaran' => 'sudah_dibayar', // Status pembayaran pesanan
+                'metode_bayar' => 'transfer', // Metode pembayaran yang digunakan
+                'snap_token' => null, // Token pembayaran (kosong)
+                'rating' => null, // Belum ada rating
+                'ulasan' => null, // Belum ada ulasan
             ],
         ];
 
-        foreach ($pesanans as $pesanan) {
-            Pesanan::create($pesanan);
+        foreach ($pesanans as $pesanan) { // Melakukan perulangan untuk setiap data pesanan dalam array
+            Pesanan::create($pesanan); // Menyimpan data pesanan ke dalam database
         }
     }
 }
