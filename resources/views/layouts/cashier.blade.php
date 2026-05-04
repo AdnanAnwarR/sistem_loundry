@@ -58,7 +58,7 @@
                 </svg>
                 Pengaturan
             </a>
-            <form method="POST" action="#">
+            <form method="POST" action="{{ route('login.logout') }}">
                 @csrf
                 <button type="submit" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-red-500 hover:bg-red-50 font-medium text-sm transition-colors">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
