@@ -50,13 +50,6 @@ Route::middleware(['auth', 'role:staff'])->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
     
     // Memberikan nama rute 'admin.dashboard' agar sesuai dengan redirect di LoginController
-    /**
- * Route untuk menampilkan Dashboard Admin.
- * 
- * URL: /admin/dashboard
- * Nama Route: admin.dashboard
- * View: resources/views/admin/adminDashboard.blade.php
- */
     Route::get('/admin/dashboard', function () {
         return view('admin.adminDashboard');
     })->name('admin.dashboard');
